@@ -1,171 +1,152 @@
+
 function mostrar()
 {
-	let tipoProducto;
+	let tipo;
 	let precio;
 	let cantidadUnidades;
 	let categoria;
-	let fabircante;
-	let contadorProductos;
-	let nombreProducto;
-	let promedioAlcohol;
-	let acumuladorAlcohol;
-	let contadorAlcohol;
-	let contadorIac;
-	let promedioIac;
-	let acumuladorIac;
-	let contadorQuat;
-	let promediaQuat;
-	let acumuladorQuat;
-	let acumuladordesinfectante;
-	let acumuladorbacteriada;
-	let acumuladordetergente;
-	let contadorDesinfectante;
-	let contadorBacteriada;
-	let contadorDetergente;
-	let acumuladorDetergenteMenor;
-	let precioMasCaro;
-	let fabricanteMasCaro;
-	let categoriaMasCaro;
+	let fabricante;
+	let i;
+	let acumuladorAlcohol = 0;
+	let acumuladorIac = 0;
+	let acumuladorQUAT = 0;
+	let contadorAlcohol = 0;
+	let contadorIAC = 0; 
+	let contadorQUAT = 0;
+	let promedioAlcohol = 0;
+	let promedioIAC = 0;
+	let promedioQUAT = 0;
+	let acumuladorBactericiada = 0;
+	let acumuladorDesinfectante = 0;
+	let acumuladorDetergente = 0;
+	let acumuladorMenor200 = 0;
+	let precioCaro = 0;
+	let categoriaCaro;
+	let fabricanteCaro;
 
 
-
-	acumuladorAlcohol = 0;
-	contadorProductos = 0;
-	contadorAlcohol = 0;
-	contadorIac = 0;
-	acumuladorIac = 0;
-	contadorQuat = 0;
-	promediaQuat = 0;
-	acumuladorQuat = 0;
-	acumuladordesinfectante = 0;
-	acumuladorbacteriada = 0;
-	acumuladordetergente = 0;
-	contadorDesinfectante = 0;
-	contadorBacteriada = 0;
-	contadorDetergente = 0;
-	acumuladorDetergenteMenor = 0;
-	precioMasCaro = 0;
-	fabricanteMasCaro = 0;
-	categoriaMasCaro = 0;
-
-
-	
-	while(contadorProductos < 5)
+	for(i = 0 ; i<5 ; i++)
 	{
-		nombreProducto = prompt("Ingrese el nombre del producto");
-		tipoProducto = prompt("Ingrese el tipo de producto: ALCOHOL, IAC o QUAT.");
-		while(isNaN(tipoProducto) == false || tipoProducto != "ALCOHOL" && tipoProducto != "IAC" && tipoProducto != "QUAT")
+		tipo = prompt("Ingresa el tipo de producto que desea : 1)ALCOHOL , 2)IAC ,3)QUAT");
+		while(tipo !="ALCOHOL" && tipo!= "IAC" && tipo!= "QUAT")
 		{
-			tipoProducto = prompt ("Reingrese un producto valido.");
+			tipo = prompt("Error.Reingresa el tipo de producto que desea : 1)ALCOHOL , 2)IAC ,3)QUAT");
+		}
+		precio = parseInt(prompt("Ingrese el precio"));
+		while(precio < 100 || precio >300 || isNaN(precio) == true)
+		{
+			precio = parseInt(prompt("Error.Reingrese el precio"));
+		}
+		cantidadUnidades = parseInt(prompt("Ingrese la canitdad de unidades"));
+		while(cantidadUnidades <= 0 || cantidadUnidades>1000 || isNaN(cantidadUnidades)==true)
+		{ 
+			cantidadUnidades = parseInt(prompt("Reingrese la canitdad de unidades"));
 		}
 
-		precio = prompt("Ingrese el precio: ");
-		precio = parseInt(precio);
-		while(isNaN(precio) == true || precio < 100 || precio > 300)
+		categoria = prompt("Ingrese la categoria que desea : 1)desinfectante , 2)bactericiada , 3)detergente :");
+		while(categoria !="desinfectante" && categoria!= "bactericiada" && categoria!= "detergente")
 		{
-			precio = prompt ("Reingrese un precio valido");
-			precio = parseInt(precio);
+			categoria = prompt("Error.Reingresa la categoria de producto que desea : 1)desinfectante , 2)bactericiada ,3)detergente");
 		}
+		fabricante = prompt("ingrese el fabricante que desea ");
 
-		cantidadUnidades = prompt("Ingrese una cantidad de unidades");
-		cantidadUnidades = parseInt(cantidadUnidades);
-		while(isNaN(cantidadUnidades) == true || cantidadUnidades < 0 || cantidadUnidades > 1000)
+		switch(tipo)	
 		{
-			cantidadUnidades = prompt ("Reingrese una cantidad de unidades validas");
-			cantidadUnidades = parseInt(cantidadUnidades);
-		}
+			case "ALCOHOL":
+			acumuladorAlcohol = acumuladorAlcohol + cantidadUnidades;
+			contadorAlcohol++;
+			break;
 
-		categoria = prompt("Ingrese la categoria: desinfectante, bacteriada o detergente");
-		while(isNaN(categoria) == false || categoria != "desinfectante" && categoria != "bacteriada" && categoria != "detergente")
-		{
-			categoria = prompt ("Reingrese un producto valido.");
-		}
-	
-		fabircante = prompt("Ingrese el fabricante que desea.");
-	
-		switch(tipoProducto)
-		{
-			case "ALCOHOL":	
-				acumuladorAlcohol = acumuladorAlcohol + cantidadUnidades;
-				contadorAlcohol++;
-				break;
-				
-			case "IAC":	
-				acumuladorIac = acumuladorIac + cantidadUnidades;		
-				contadorIac++;
-				break;			
-			
+			case "IAC":
+			acumuladorIac = acumuladorIac + cantidadUnidades;
+			contadorIAC++;
+			break;
+		
 			case "QUAT":
-				contadorQuat++;
-				acumuladorQuat = acumuladorQuat + cantidadUnidades;
-				break;	
+			acumuladorQUAT = acumuladorQUAT + cantidadUnidades;
+			contadorQUAT++;
+			break;
 		}
 
 		switch(categoria)
 		{
 			case "desinfectante":
-				acumuladordesinfectante = acumuladordesinfectante + cantidadUnidades;
-				contadorDesinfectante++;
-				break;
+			acumuladorDesinfectante = acumuladorDesinfectante + cantidadUnidades;
+			break;
 
-			case "bacteriada":
-				acumuladorbacteriada = acumuladorbacteriada + cantidadUnidades;	
-				contadorBacteriada++;			
-				break;
-			
+			case "bactericiada":
+			acumuladorBactericiada = acumuladorBactericiada + cantidadUnidades;
+			break;
+
 			case "detergente":
-				acumuladordetergente = acumuladordetergente + cantidadUnidades;
-				contadorDetergente++;
-				if(precio <201)
-				{
-					acumuladorDetergenteMenor = acumuladorDetergenteMenor + cantidadUnidades;
-				}
-				break;	
-		
-			
-		
-			}
-			if(contadorProductos == 0 || precio > precioMasCaro)
+			acumuladorDetergente = acumuladorDetergente + cantidadUnidades;
+			if(precio < 201)
 			{
-				precioMasCaro = precioIngresado;
-				fabricanteMasCaro = fabircante;
-				categoriaMasCaro = categoria;
+				acumuladorMenor200 = acumuladorMenor200 + cantidadUnidades;
 			}
-			contadorProductos++;
+			break;
+		}
+
+		if(precio>precioCaro)
+		{
+			fabricanteCaro = fabricante;
+			categoriaCaro = categoria;
+		}
+	}
+
+
+
 	
+
+	//a) El promedio de cantidad por tipo de producto
+	promedioAlcohol = acumuladorAlcohol / contadorAlcohol;
+	if(acumuladorAlcohol != 0)
+	{
+		document.write("El promedio de la cantidad de los alcoholes fue : " +promedioAlcohol);
+	}
+
+	promedioIAC = acumuladorIac / contadorIAC;
+	if(acumuladorIac != 0)
+	{
+		document.write("El promedio de la cantidad de los IAC fue : " + promedioIAC);
+	}
+	
+	promedioQUAT = acumuladorQUAT / contadorQUAT;
+	if(acumuladorQUAT != 0)
+	{
+		document.write("El promedio de la cantidad de los QUAT fue : " + promedioQUAT);
+	}
+
+	//b) La categoria con mas cantidad de unidades en total de la compra
+	if(acumuladorDesinfectante > acumuladorBactericiada)
+	{
+		if(acumuladorDesinfectante > acumuladorDetergente)
+		{
+			document.write("El producto con mas cantidad de unidades es desinfectante <br>");
+
+		}
+		else
+		{
+			document.write("El producto con mas cantidad de unidades es detergente <br>");
+		}
 	}	
-
-		
-		promedioAlcohol = acumuladorAlcohol / contadorAlcohol;
-		document.write("El promedio de cantidad de alcohol es: " + promedioAlcohol + "<br>");
-		
-		promedioIac = acumuladorIac / contadorIac;
-		document.write("El promedio de cantidad de iac es: " + promedioIac + "<br>");
-
-
-		
-		promediaQuat = acumuladorQuat / contadorQuat;
-		document.write("El promedio de cantidad de quat es: " + promedioQuat + "<br>");
-
-
-
-		if(acumuladordesinfectante > acumuladorbacteriada && acumuladordesinfectante > acumuladordetergente)
+	else
 	{
-		document.write ("El tipo de inflamable con más cantidad de unidades es desinfectante" + "<br>");
+		if(acumuladorBactericiada > acumuladorDetergente)
+		{
+			document.write("El prod ucto con mas cantidad de unidades es bactericida <br>");
+		}
+		
+		
 	}
 
-	if(acumuladorbacteriada > acumuladordesinfectante && acumuladorbacteriada > acumuladordetergente)
+	// c) Cuántas unidades de detergente con precios menos a 200 (inclusive) se compraron en total
+	if(acumuladorMenor200 != 0)
 	{
-		document.write ("El tipo de inflamable con más cantidad de unidades es: bacteriada" + "<br>");
+		document.write("Las unidades de detergente que costaron menos a 200pesos fueron :  " + acumuladorMenor200 +"<br>");
 	}
+	
+	// d) el fabricante y Categoria del más caro de los productos
 
-	if(acumuladordetergente > acumuladorbacteriada && acumuladordetergente > acumuladordesinfectante)
-	{
-		document.write ("El tipo de inflamable con más cantidad de unidades es: detergente" + "<br>");
-	}
-
-	document.write("La cantidad de unidades de detergente con precios menores a 200 es: " + acumuladorDetergenteMenor + "<br>");
-
-	document.write("El fabricante mas caro es " + fabricanteMasCaro + " y la categoria mas cara es " + categoriaMasCaro + "<br>");
-
+	document.write("El fabricante mas caro es " + fabricanteCaro +"y la categoria mas cara es " + categoriaCaro + "<br>");
 }
