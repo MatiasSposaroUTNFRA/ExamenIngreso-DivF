@@ -87,7 +87,7 @@ function mostrar()
 			break;
 		}
 
-		if(precio>precioCaro)
+		if(precio>precioCaro || precioCaro == 0)
 		{
 			fabricanteCaro = fabricante;
 			categoriaCaro = categoria;
